@@ -1,0 +1,104 @@
+body {
+    font-family: 'Bahnschrift Light', Verdana, sans-serif;
+    background: url("/src/storage/app/public/images/assets/wall.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding-left: 0;
+}
+
+.header ul {
+    display: flex;
+    position: fixed;
+    text-align: center;
+    margin: 0;
+    padding-left: 0;
+    background: rgba(209, 203, 203, 0.6);
+    width: 100%;
+    justify-content: center;
+}
+
+.header li {
+    list-style: none;
+    float: left;
+    padding-left: 0px;
+    margin-right: 25px;
+    padding: 20px;
+    padding-bottom: 23px;
+}
+
+.header a {
+    font-size: 22px;
+    text-decoration: none;
+    color: rgb(51, 70, 152);
+}
+
+.content {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 100px;
+}
+
+.validation_error {
+    color: red;
+    font-size: 14px;
+}
+
+.success {
+    color: #32CD32;
+    margin-bottom: 30px;
+}
+
+.fail {
+    color: red;
+    margin-bottom: 30px;
+}
+
+fieldset {
+    display: inline-block;
+}
+
+.main-menu-video {
+    margin: 100px;
+}
+
+input.photo, label.photo {
+    padding-left: 70px;
+}
+
+/*  */
+.places a {
+    color: rgb(152, 68, 51);
+    text-decoration: none;
+}
+
+.header li:hover {
+    background-color: rgba(172, 157, 157, 0.276);
+}
+
+select {
+    color: black;
+    text-align: center;
+    border-radius: 0;
+    border: 2px solid black;
+}
+
+button {
+    background-color: rgb(210, 211, 226);
+    padding: 10px;
+}
+
+button:hover {
+    background-color: rgb(140, 147, 216);
+}
+
+button.smaller {
+    padding: 3px;
+}
+
+select, button, input {
+    font-family: 'Bahnschrift Light', Verdana, sans-serif;
+}
