@@ -39,6 +39,7 @@ Route::get('/places/add', [PlaceController::class, 'add']);
 Route::post('/places/add', [PlaceController::class, 'store']);
 Route::post('/places/move/{id}', [PlaceController::class, 'move']);
 Route::get('/places/move/{id}', [PlaceController::class, 'was']);
+Route::delete('/places/delete/{id}', [PlaceController::class, 'delete']);
 
 Route::get('/profile', [ProfileController::class, 'show']);
 Route::get('/profile/edit', [ProfileController::class, 'edit']);

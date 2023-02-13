@@ -69,7 +69,6 @@ input.photo, label.photo {
     padding-left: 70px;
 }
 
-/*  */
 .places a {
     color: rgb(152, 68, 51);
     text-decoration: none;
@@ -101,4 +100,34 @@ button.smaller {
 
 select, button, input {
     font-family: 'Bahnschrift Light', Verdana, sans-serif;
+}
+
+table {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+}
+
+td.places_1, th.places_1 {
+    width: 300px;
+}
+
+td.places_2, th.places_2 {
+    width: 100px;
+}
+
+td.places_3, th.places_3 {
+    width: 100px;
+}
+
+td.places_4, th.places_4 {
+    width: 200px;
+}
+
+td.places_5, th.places_5 {
+    width: 100px;
+}
+
+button.smaller {
+    margin: 20px;
 }

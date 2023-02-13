@@ -67,4 +67,10 @@ class PlaceController extends Controller
         echo 'success';
         return redirect('/places/was');
     }
+
+    public function delete($id) {
+        $type = Place::where('id' , $id)->first()->value('type');
+        Place::where('id' , $id)->where('type', $type)->delete();
+        return redirect("/places/$type")->with('success', 'Место было удалено успешно!');
+    }
 }
