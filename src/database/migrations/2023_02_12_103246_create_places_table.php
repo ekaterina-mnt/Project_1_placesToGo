@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('comment', 300)->nullable();
             $table->string('link', 500);
             $table->string('type');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

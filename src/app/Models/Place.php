@@ -20,5 +20,6 @@ class Place extends Model
         'comment',
         'link',
         'type',
+        'user_id',
     ];
 }

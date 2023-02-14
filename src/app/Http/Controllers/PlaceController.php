@@ -11,12 +11,15 @@ class PlaceController extends Controller
     //Список мест, куда я хочу пойти
     public function want()
     {
-        $user_id = Auth::user()->id;
-        $places = Place::where('id', $user_id)
-            ->where('type', 'want')
-            ->get();
+        if (Auth::user()) {
+            $user_id = Auth::user()->id;
+            $places = Place::where('user_id', $user_id)
+                ->where('type', 'want')
+                ->get();
 
-        return view('places.want')->with('places', $places);
+            return view('places.want')->with('places', $places);
+        }
+        return view('places.want');
     }
 
 
@@ -45,32 +48,40 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->validate([
-            'name' => 'required',
-            'price' => '',
-            'date' => '',
-            'link' => 'required|starts_with:https://, http://',
-            'comment' => '',
-            'type' => '',
-        ]);
+        if (Auth::user()) {
 
-        $type = $requestData['type'];
+            $requestData = $request->validate([
+                'name' => 'required',
+                'price' => '',
+                'date' => '',
+                'link' => 'required|starts_with:https://, http://',
+                'comment' => '',
+                'type' => '',
+            ]);
 
-        // Создание места 
-        Place::create($requestData);
+            $type = $requestData['type'];
+            $requestData['user_id'] = Auth::user()->id;
 
-        return redirect("/places/$type")->with('success', 'Вы успешно добавили новое место!');
+            // Создание места 
+            Place::create($requestData);
+
+            return redirect("/places/$type")->with('success', 'Вы успешно добавили новое место!');
+        } else {
+            return view('place.want');
+        }
     }
 
-    public function move($id) {
-        $data = Place::where('id' , $id)->update(['type' => 'was']);
+    public function move($id)
+    {
+        $data = Place::where('id', $id)->update(['type' => 'was']);
         echo 'success';
         return redirect('/places/was');
     }
 
-    public function delete($id) {
-        $type = Place::where('id' , $id)->first()->value('type');
-        Place::where('id' , $id)->where('type', $type)->delete();
+    public function delete($id)
+    {
+        $type = Place::where('id', $id)->first()->value('type');
+        Place::where('id', $id)->where('type', $type)->delete();
         return redirect("/places/$type")->with('success', 'Место было удалено успешно!');
     }
 }

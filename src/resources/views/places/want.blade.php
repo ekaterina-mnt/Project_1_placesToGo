@@ -10,14 +10,7 @@
 
 <h1>Хочу пойти</h1>
 
-@if ($places == null) 
-<p>Здесь будут места, куда я хочу пойти.</p>
-
-<form action="{{ url('places/add') }}">
-    <button type="submit">Добавить новое место</button>
-</form>
-
-@else
+@if ($places != null) 
 
 <table>
     <tr>
@@ -72,7 +65,17 @@
     @endforeach
 </table>
 
+@else
+
+<p>Здесь будут места, куда я хочу пойти.</p>
+
 @endif
+
+<br>
+
+<form action=" {{ url('/places/add') }}">
+    <button class="smaller" type="submit">Добавить новое место</button>
+</form>
 
 <form action=" {{ url('/places/was') }}">
     <button class="smaller" type="submit">Посмотреть мои старые места</button>
@@ -80,6 +83,10 @@
 
 @else 
 
+<h2>Доступ ограничен</h2>
+
 <p>Для посещения этой страницы необходимо авторизоваться.</p>
+
+@endif
 
 @endsection('content')

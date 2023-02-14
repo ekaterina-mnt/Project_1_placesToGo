@@ -105,31 +105,36 @@ select, button, input {
 table {
     text-align: center;
     margin: 0 auto;
+    font-size: 20px;
+}
+
+th {
     font-size: 24px;
 }
 
 td.places_1, th.places_1 {
-    width: 300px;
+    width: 600px;
+    padding:15px;
 }
 
 td.places_2, th.places_2 {
-    width: 100px;
+    width: 400px;
+    padding:15px;
 }
 
 td.places_3, th.places_3 {
-    width: 100px;
+    width: 300px;
+    padding:15px;
 }
 
 td.places_4, th.places_4 {
-    width: 200px;
+    width: 400px;
+    padding:15px;
 }
 
 td.places_5, th.places_5 {
-    width: 100px;
-}
-
-button.smaller {
-    margin: 20px;
+    width: 150px;
+    padding:15px;
 }
 
 a.idea {
