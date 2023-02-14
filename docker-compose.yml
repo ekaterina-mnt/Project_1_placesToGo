@@ -21,7 +21,7 @@ services:
   mysql:
     image: mysql:5.7.41
     restart: unless-stopped
-    tty: true #enables shell flag
+    tty: true
     container_name: mysql
     ports:
       - "4306:3306"
@@ -46,5 +46,33 @@ services:
       - "9000:9000"
     volumes:
       - ./src:/var/www/html
+    networks:
+      - laravel
+
+  npm:
+    image: node:current-alpine
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "5173:5173"
+    working_dir: /var/www/html
+    entrypoint: [ 'npm' ]
+    networks:
+      - laravel
+
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - ./src:/var/www/html:delegated
+    depends_on:
+      - mysql
+    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
       - laravel
