@@ -6,6 +6,8 @@
 
 @section('content')
 
+@if (auth()->user())
+
 <h1>Хочу пойти</h1>
 
 @if ($places == null) 
@@ -75,5 +77,9 @@
 <form action=" {{ url('/places/was') }}">
     <button class="smaller" type="submit">Посмотреть мои старые места</button>
 </form>
+
+@else 
+
+<p>Для посещения этой страницы необходимо авторизоваться.</p>
 
 @endsection('content')

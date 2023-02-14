@@ -131,3 +131,7 @@ td.places_5, th.places_5 {
 button.smaller {
     margin: 20px;
 }
+
+a.idea {
+    text-decoration: none;
+}

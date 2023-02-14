@@ -3,11 +3,10 @@
         <li><a href="{{ url('/') }}">Главная</a></li>
         <li><a href="{{ url('/ideas') }}">Найти идею</a></li>
 
-
-        @if (auth()->user())
-
         <!-- Хочу пойти -->
         <li><a href="{{ url('places/want') }}">Мои места</a></li>
+
+        @if (auth()->user())
 
         <!-- Аккаунт -->
         <li class="menu_item">
