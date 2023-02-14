@@ -38,11 +38,19 @@
         <fieldset>
             <legend>Выберите свой пол:*</legend>
             <label>
-                <input name="gender" type="radio" value="male">
+                @if (old('gender') === 'male')
+                <input name="gender" placeholder="gender" type="radio" value="male" checked>
+                @else
+                <input name="gender" placeholder="gender" type="radio" value="male">
+                @endif
                 Мужской</label>
             <br>
             <label>
-                <input name="gender" type="radio" value="female">
+                @if (old('gender') === 'female')
+                <input name="gender" placeholder="gender" type="radio" value="female" checked>
+                @else
+                <input name="gender" placeholder="gender" type="radio" value="female">
+                @endif
                 Женский</label>
             <div class="validation_error">
                 @error('gender')

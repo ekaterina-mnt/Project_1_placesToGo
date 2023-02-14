@@ -10,7 +10,7 @@
 
 <h1>Хочу пойти</h1>
 
-@if ($places != null) 
+@if ($places != null)
 
 <table>
     <tr>
@@ -51,7 +51,13 @@
         <td class="places_5">
             <form action=" {{ url('/places/move/' . $place->id) }}" method="POST">
                 @csrf
-                <button class="smaller" type="submit">Уже был(а)</button>
+                <button class="smaller" type="submit">
+                    @if (auth()->user()->gender == 'female')
+                    Уже была
+                    @else
+                    Уже был
+                    @endif
+                </button>
             </form>
         </td>
         <td class="places_6">
@@ -77,11 +83,12 @@
     <button class="smaller" type="submit">Добавить новое место</button>
 </form>
 
+<!-- 
 <form action=" {{ url('/places/was') }}">
     <button class="smaller" type="submit">Посмотреть мои старые места</button>
-</form>
+</form> -->
 
-@else 
+@else
 
 <h2>Доступ ограничен</h2>
 

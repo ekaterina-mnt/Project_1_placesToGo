@@ -8,6 +8,15 @@
 
         @if (auth()->user())
 
+        <!-- Уже посетил(а) -->
+        <li><a href="{{ url('places/was') }}">
+                @if (auth()->user()->gender == 'female')
+                Уже была
+                @else
+                Уже был
+                @endif
+            </a></li>
+
         <!-- Аккаунт -->
         <li class="menu_item">
             <a href="{{ url('/profile') }}">{{ auth()->user()->login }}</a>

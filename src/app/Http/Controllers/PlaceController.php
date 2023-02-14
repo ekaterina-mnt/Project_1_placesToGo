@@ -27,11 +27,13 @@ class PlaceController extends Controller
     public function was()
     {
         $user_id = Auth::user()->id;
-        $places = Place::where('id', $user_id)
+        $places = Place::where('user_id', $user_id)
             ->where('type', 'was')
             ->get();
 
-        return view('places.was')->with('places', $places);
+        return view('places.was')->with('places', $places)
+        
+        ;
     }
 
     //Добавить новое место
@@ -71,13 +73,27 @@ class PlaceController extends Controller
         }
     }
 
+
+    // Переместить в "уже была"
     public function move($id)
     {
-        $data = Place::where('id', $id)->update(['type' => 'was']);
-        echo 'success';
-        return redirect('/places/was');
+        Place::where('id', $id)->update(['type' => 'was']);
+
+        return redirect("/places/want")->with('success', 'Место было успешно перемещено!');
+        // return redirect()->action([PlaceController::class, 'was'], ['id' => Auth::user()->id]);
     }
 
+
+    // Переместить в "мои места(хочу пойти)"
+    public function return($id)
+    {
+        Place::where('id', $id)->update(['type' => 'want']);
+
+        return redirect("/places/was")->with('success', 'Место было успешно перемещено!');
+        // return redirect()->action([PlaceController::class, 'want'], ['id' => Auth::user()->id]);
+    }
+
+    // Удалить
     public function delete($id)
     {
         $type = Place::where('id', $id)->first()->value('type');

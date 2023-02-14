@@ -5,7 +5,13 @@
 @endsection('title')
 
 @section('content')
-<p>Здесь будут места, где я уже была.</p>
+
+@if (auth()->user())
+
+<h1>Уже была</h1>
+
+@if ($places != null)
+
 <table>
     <tr>
         <th class="places_1">Название</th>
@@ -43,7 +49,15 @@
             @endif
         </td>
         <td class="places_5">
-            <form action=" {{ url('/places/delete/' . $place->id) }}">
+            <form action=" {{ url('/places/return/' . $place->id) }}" method="POST">
+                @csrf
+                <button class="smaller" type="submit">
+                    Вернуть в хочу пойти
+                </button>
+            </form>
+        </td>
+        <td>
+            <form action=" {{ url('/places/delete/' . $place->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="smaller" type="submit">Удалить</button>
@@ -52,5 +66,29 @@
     </tr>
     @endforeach
 </table>
+
+@else
+
+<p>
+    Здесь будут места и мероприятия, которые я уже
+    @if (auth()->user()->gender == 'female')
+    посетил
+    @else
+    посетила
+    @endif
+</p>
+
+@endif
+
+<br>
+
+
+@else
+
+<h2>Доступ ограничен</h2>
+
+<p>Для посещения этой страницы необходимо авторизоваться.</p>
+
+@endif
 
 @endsection('content')
