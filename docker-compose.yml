@@ -23,8 +23,6 @@ services:
     restart: unless-stopped
     tty: true
     container_name: mysql
-    ports:
-      - "4306:3306"
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
@@ -49,4 +47,15 @@ services:
     networks:
       - laravel
 
+  npm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: npm
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - laravel
   
