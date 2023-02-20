@@ -33,10 +33,10 @@ class ProfileController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-                $fileName = $request->file('photo')->getClientOriginalName();
-                $path = $request->file('photo')->storeAs('images', $fileName, 'public');
-                $requestData["photo"] = '/storage/app/public/' . $path;
-                DB::table('users')
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('images', $fileName, 'public');
+            $requestData["photo"] = 'storage/' . $path;
+            DB::table('users')
                 ->where('id', $user->id)
                 ->update(['photo' => $requestData["photo"]]);
         }
@@ -53,5 +53,16 @@ class ProfileController extends Controller
         // Сохранение изменений
 
         return redirect('/profile')->with('success', 'Вы успешно изменили данные профиля!');
+    }
+
+    // Удалить
+    public function photo_delete($id)
+    {
+        DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'photo' => null,
+            ]);
+        return redirect("/profile/edit");
     }
 }

@@ -46,3 +46,4 @@ Route::delete('/places/delete/{id}', [PlaceController::class, 'delete']);
 Route::get('/profile', [ProfileController::class, 'show']);
 Route::get('/profile/edit', [ProfileController::class, 'edit']);
 Route::post('/profile/edit', [ProfileController::class, 'update']);
+Route::delete('/places/photo/delete/{id}', [ProfileController::class, 'photo_delete']);

@@ -75,7 +75,13 @@
     <div>
         <select name="type">
             <option value="want">Хочу пойти</option>
-            <option value="was">Уже посетил(а)</option>
+            <option value="was">Уже
+                @if (auth()->user()->gender == 'female')
+                посетил
+                @else
+                посетила
+                @endif
+            </option>
         </select>
     </div>
     <div class="validation_error">

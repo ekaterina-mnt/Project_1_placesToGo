@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('surname')->nullable();
             $table->date('birthday')->nullable();
             $table->string('gender');
-            $table->string('photo', 300)->default('/src/storage/app/public/images/assets/epmty-photo.png');
+            $table->string('photo', 300)->nullable();
             $table->string('email')->unique();
             $table->string('login')->unique();
             $table->string('password');

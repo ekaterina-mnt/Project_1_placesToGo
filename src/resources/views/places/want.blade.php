@@ -10,7 +10,8 @@
 
 <h1>Хочу пойти</h1>
 
-@if ($places != null)
+@switch (count($places))
+@case (true)
 
 <table>
     <tr>
@@ -71,22 +72,19 @@
     @endforeach
 </table>
 
-@else
+@break
+@case (0)
 
 <p>Здесь будут места, куда я хочу пойти.</p>
 
-@endif
+@break
+@endswitch
 
 <br>
 
 <form action=" {{ url('/places/add') }}">
     <button class="smaller" type="submit">Добавить новое место</button>
 </form>
-
-<!-- 
-<form action=" {{ url('/places/was') }}">
-    <button class="smaller" type="submit">Посмотреть мои старые места</button>
-</form> -->
 
 @else
 

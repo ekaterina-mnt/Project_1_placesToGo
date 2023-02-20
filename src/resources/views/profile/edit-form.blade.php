@@ -10,9 +10,17 @@
 <div class="text-block">
     <form action="{{ url('/profile/edit') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
         <div>
+            @if ($user->photo)
             <img src="{{ $user->photo }}" width=150><br>
+            <form action=" {{ url('/profile/delete/' . $user->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="smaller" type="submit">Удалить фото</button>
+            </form>
+            @else
+            <img src="{{ asset('empty-photo.jpg') }}" width=150><br>
+            @endif
             <input class="photo" type="file" name="photo" accept=".png,.jpeg,.jpg" value="{{ $user->photo }}">
         </div>
         <div class="validation_error">

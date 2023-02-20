@@ -1,6 +1,6 @@
 body {
     font-family: 'Bahnschrift Light', Verdana, sans-serif;
-    background: url("/src/storage/app/public/images/assets/wall.jpg");
+    background: url("wall.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;

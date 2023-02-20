@@ -8,9 +8,16 @@
 
 @if (auth()->user())
 
-<h1>Уже была</h1>
+<h1>Уже
+    @if (auth()->user()->gender == 'female')
+    была
+    @else
+    был
+    @endif
+</h1>
 
-@if ($places != null)
+@switch (count($places))
+@case (true)
 
 <table>
     <tr>
@@ -67,18 +74,20 @@
     @endforeach
 </table>
 
-@else
+@break
+@case (0)
 
 <p>
     Здесь будут места и мероприятия, которые я уже
     @if (auth()->user()->gender == 'female')
-    посетил
+    посетила.
     @else
-    посетила
+    посетил.
     @endif
 </p>
 
-@endif
+@break
+@endswitch
 
 <br>
 
