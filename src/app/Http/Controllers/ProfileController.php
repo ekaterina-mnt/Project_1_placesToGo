@@ -35,7 +35,7 @@ class ProfileController extends Controller
         if ($request->hasFile('photo')) {
             $fileName = $request->file('photo')->getClientOriginalName();
             $path = $request->file('photo')->storeAs('images', $fileName, 'public');
-            $requestData["photo"] = 'storage/' . $path;
+            $requestData["photo"] = '/storage/' . $path;
             DB::table('users')
                 ->where('id', $user->id)
                 ->update(['photo' => $requestData["photo"]]);
@@ -55,7 +55,7 @@ class ProfileController extends Controller
         return redirect('/profile')->with('success', 'Вы успешно изменили данные профиля!');
     }
 
-    // Удалить
+    // Удалить фото
     public function photo_delete($id)
     {
         DB::table('users')

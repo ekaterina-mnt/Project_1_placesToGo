@@ -8,17 +8,22 @@
 <h1>Изменить профиль</h1>
 
 <div class="text-block">
+    <!-- Фото пользователя (если он добавлял) -->
+    @if ($user->photo)
+    <img src="{{ $user->photo }}" width=150>
+    <br>
+    <form action=" {{ url('/profile/photo/delete/' . $user->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button class="smaller" type="submit">Удалить фото</button>
+    @endif
+    </form>
+
     <form action="{{ url('/profile/edit') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
-            @if ($user->photo)
-            <img src="{{ $user->photo }}" width=150><br>
-            <form action=" {{ url('/profile/photo/delete/' . $user->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="smaller" type="submit">Удалить фото</button><br>
-            </form>
-            @else
+            <!-- Пустая аватарка -->
+            @if (!$user->photo)
             <img src="{{ asset('empty-photo.jpg') }}" width=150><br>
             @endif
             <input class="photo" type="file" name="photo" accept=".png,.jpeg,.jpg" value="{{ $user->photo }}">

@@ -35,7 +35,7 @@ class RegisterController extends Controller
         if ($request->hasFile('photo')) {
             $fileName = $request->file('photo')->getClientOriginalName();
             $path = $request->file('photo')->storeAs('images', $fileName, 'public');
-            $requestData["photo"] = '/src/storage/app/public/' . $path;
+            $requestData["photo"] = '/storage/' . $path;
         };
 
         // Создание аккаунта
