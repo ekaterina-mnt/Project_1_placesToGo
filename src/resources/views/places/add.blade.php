@@ -77,9 +77,9 @@
             <option value="want">Хочу пойти</option>
             <option value="was">Уже
                 @if (auth()->user()->gender == 'female')
-                посетил
-                @else
                 посетила
+                @else
+                посетил
                 @endif
             </option>
         </select>

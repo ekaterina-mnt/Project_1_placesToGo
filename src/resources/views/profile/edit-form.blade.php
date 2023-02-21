@@ -13,10 +13,10 @@
         <div>
             @if ($user->photo)
             <img src="{{ $user->photo }}" width=150><br>
-            <form action=" {{ url('/profile/delete/' . $user->id) }}" method="POST">
+            <form action=" {{ url('/profile/photo/delete/' . $user->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button class="smaller" type="submit">Удалить фото</button>
+                <button class="smaller" type="submit">Удалить фото</button><br>
             </form>
             @else
             <img src="{{ asset('empty-photo.jpg') }}" width=150><br>
